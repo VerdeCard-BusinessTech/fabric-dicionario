@@ -41,6 +41,8 @@ No Windows (PowerShell): `git clone https://github.com/VerdeCard-BusinessTech/fa
 
 ## Contribuindo
 
+Guia completo: **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+
 Para adicionar ou corrigir uma tabela, siga o [MODELO.md](MODELO.md). Você também pode pedir ao Claude: *"adicione a tabela X ao dicionário do Fabric"*.
 
 **Este repositório é público:** registre estrutura e regras, nunca dados reais de clientes, senhas ou links de conexão.

@@ -50,3 +50,25 @@ Quando a pessoa pedir para **adicionar ou corrigir** uma tabela:
 - atualize o índice acima.
 
 Se a fabric-readonly estiver configurada, confira nomes e tipos com `describe` antes de registrar. **Este repositório é público:** registre estrutura e regras, nunca dados reais de clientes, senhas ou links de conexão.
+
+## Contribuindo: evoluir com o uso
+
+Quando, durante o uso, aparecer algo que melhoraria o dicionário, ofereça **uma vez, em uma frase**: *"Quer que eu registre isso como sugestão para a skill?"*. Não insista. Exemplos: significado de coluna confirmado pela pessoa, regra de negócio, tabela nova, onde fica uma tabela, erro na documentação ou bug.
+
+Se a pessoa aceitar:
+
+1. **Escreva a mudança.** Siga o `MODELO.md`, confira nomes com `describe` (fabric-readonly) e atualize o índice.
+2. **Revise contra o que NUNCA pode entrar (o repositório é PÚBLICO):** senhas, tokens e credenciais; links de conexão do Fabric; dados de clientes ou colaboradores (CPF, nomes, contas, telefones, e-mails, matrículas); resultados de consultas com dados reais; IDs do Azure ou e-mails corporativos. Se a informação depende disso, generalize (ex.: `dbo.minha_tabela`, `'2026-09-01'`) ou descarte.
+3. **Mostre a mudança e peça confirmação explícita** antes de publicar. Publicar num repositório público não tem volta.
+4. **Se o GitHub estiver configurado** (`gh auth status` OK), na pasta da skill:
+   ```bash
+   git switch -c sugestao/<tema-curto>
+   git add <arquivos> && git commit -m "<resumo>"
+   gh repo fork --remote --remote-name fork        # só se a pessoa não tiver permissão de escrita
+   git push -u fork sugestao/<tema-curto>          # ou: git push -u origin ... se tiver permissão
+   gh pr create --repo VerdeCard-BusinessTech/fabric-dicionario --title "<resumo>" --body "<o que muda e por quê + checklist do modelo de PR marcado>"
+   git switch main                                 # a skill instalada volta para a versão oficial
+   ```
+   Passe o link do PR para a pessoa. A mudança só vale para todos depois que o responsável aprovar.
+5. **Sem GitHub:** escreva a sugestão pronta (título, o que muda, por quê) para a pessoa mandar ao responsável. Ou passe o link para abrir uma issue: https://github.com/VerdeCard-BusinessTech/fabric-dicionario/issues/new?template=sugestao.md
+6. **Nunca faça commit direto no `main`.** Ele é protegido: toda mudança entra por PR com aprovação e passa por uma verificação automática de credenciais e dados pessoais. Detalhes no `CONTRIBUTING.md`.
