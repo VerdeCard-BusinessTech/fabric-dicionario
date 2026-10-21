@@ -51,6 +51,15 @@ Quando a pessoa pedir para **adicionar ou corrigir** uma tabela:
 
 Se a fabric-readonly estiver configurada, confira nomes e tipos com `describe` antes de registrar. **Este repositório é público:** registre estrutura e regras, nunca dados reais de clientes, senhas ou links de conexão.
 
+## Atualizações
+
+- Se a skill **fabric-readonly** estiver instalada, ela já confere as versões das duas skills (1x por hora) e avisa.
+- Se só o dicionário estiver instalado: **na primeira vez que usar o dicionário numa conversa**, compare o arquivo `VERSION` local com o do GitHub:
+  ```bash
+  git -C <pasta desta skill> fetch -q && git -C <pasta desta skill> show origin/main:VERSION
+  ```
+  Se a versão do GitHub for maior, avise em uma frase e ofereça atualizar com `git -C <pasta desta skill> pull --ff-only`. Depois, mostre as novidades do `CHANGELOG.md`. Sem internet, siga sem avisar.
+
 ## Contribuindo: evoluir com o uso
 
 Quando, durante o uso, aparecer algo que melhoraria o dicionário, ofereça **uma vez, em uma frase**: *"Quer que eu registre isso como sugestão para a skill?"*. Não insista. Exemplos: significado de coluna confirmado pela pessoa, regra de negócio, tabela nova, onde fica uma tabela, erro na documentação ou bug.
@@ -71,4 +80,5 @@ Se a pessoa aceitar:
    ```
    Passe o link do PR para a pessoa. A mudança só vale para todos depois que o responsável aprovar.
 5. **Sem GitHub:** escreva a sugestão pronta (título, o que muda, por quê) para a pessoa mandar ao responsável. Ou passe o link para abrir uma issue: https://github.com/VerdeCard-BusinessTech/fabric-dicionario/issues/new?template=sugestao.md
-6. **Nunca faça commit direto no `main`.** Ele é protegido: toda mudança entra por PR com aprovação e passa por uma verificação automática de credenciais e dados pessoais. Detalhes no `CONTRIBUTING.md`.
+6. **Se a mudança deve chegar a todos como atualização**, no mesmo PR: aumente o `VERSION` (PATCH correção, MINOR tabelas/regras novas) e escreva no topo do `CHANGELOG.md`, em linguagem simples, o que muda.
+7. **Nunca faça commit direto no `main`.** Ele é protegido: toda mudança entra por PR com aprovação e passa por uma verificação automática de credenciais e dados pessoais. Detalhes no `CONTRIBUTING.md`.
